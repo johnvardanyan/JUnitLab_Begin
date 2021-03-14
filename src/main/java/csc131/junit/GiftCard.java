@@ -81,6 +81,7 @@ public class GiftCard
      */
     public double getBalance()
     {
+    	
         return balance;
     }
 
@@ -93,4 +94,6 @@ public class GiftCard
     {
         return issuingStore;
     }
+    
+ 
 }
