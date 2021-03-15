@@ -15,14 +15,11 @@ public class GiftCardTest {
 		double balance;
 		GiftCard card;
 		int issuingStore;
-		
 		issuingStore = 1337;
 		balance = 100.00;
 		card = new GiftCard(issuingStore, balance);
-		
+		//constructor_IncorrectID_Low(issuingStore);
 		assertEquals("getIssuingStore()", issuingStore, card.getIssuingStore());
-		
-		
 	}
 	@Test
 	public void getBalance() {
@@ -64,8 +61,33 @@ public class GiftCardTest {
                 Math.abs(card.getBalance()));
 		
 		assertEquals("newBalance",newBalance,balanceComparison);
-		
+		String greaterBalance = card.deduct(500.00);
+		String lesserBalance = card.deduct(-20.00);
 	}
 
-
+	
+	@Test 
+	public void constructor_IncorrectID_Low() {
+		double balance;
+		GiftCard card;
+		int issuingStore;
+		issuingStore = -5;
+		balance = 500;
+		card = new GiftCard(issuingStore, balance);
+		assertEquals("getIssuingStore()", issuingStore, card.getIssuingStore());
+		//constructor_IncorrectID_Low(issuingStore);
+		//assertThrows(IllegalArgumentException.class, () -> {new GiftCard(1,-100.00);});
+	}
+	@Test
+	public void constructor_IncorrectID_High() {
+		double balance;
+		GiftCard card;
+		int issuingStore;
+		issuingStore = 200;
+		balance = -50;
+		card = new GiftCard(issuingStore, balance);
+		assertEquals("getIssuingStore()", issuingStore, card.getIssuingStore());
+		//constructor_IncorrectID_Low(issuingStore);
+		//assertThrows(IllegalArgumentException.class, () -> {new GiftCard(1,-100.00);});
+	}
 }
